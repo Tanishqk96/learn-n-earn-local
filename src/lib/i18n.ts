@@ -127,6 +127,14 @@ export const translations: Record<Language, Record<string, string>> = {
     'common.save': 'Save',
     'common.back': 'Back',
     'common.next': 'Next',
+
+    // Gamification
+    'badges.title': 'Badges & Achievements',
+    'challenges.title': 'Daily Challenges',
+    'leaderboard.title': 'Leaderboard',
+    'friends.title': 'Friends',
+    'referral.code': 'Referral Code',
+    'referral.share': 'Share with Friends',
   },
   hi: {
     'app.name': 'फिनलर्न',

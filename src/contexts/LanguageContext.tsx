@@ -21,6 +21,10 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     document.documentElement.lang = language;
+    // Remove all language classes
+    document.documentElement.classList.remove('lang-en', 'lang-hi', 'lang-mr', 'lang-kn', 'lang-ta');
+    // Add current language class
+    document.documentElement.classList.add(`lang-${language}`);
   }, [language]);
 
   return (

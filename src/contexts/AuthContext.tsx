@@ -10,6 +10,30 @@ interface User {
   completedLessons: string[];
   completedQuizzes: string[];
   badges: string[];
+  achievements: Achievement[];
+  friends: string[];
+  referralCode: string;
+  referredBy?: string;
+  dailyChallenges: DailyChallenge[];
+  lastActive: string;
+}
+
+interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  earnedAt: string;
+  xp: number;
+  icon: string;
+}
+
+interface DailyChallenge {
+  id: string;
+  type: 'lesson' | 'quiz' | 'simulator' | 'streak';
+  target: number;
+  progress: number;
+  xpReward: number;
+  completed: boolean;
 }
 
 interface AuthContextType {
@@ -32,7 +56,45 @@ const GUEST_USER: User = {
   completedLessons: [],
   completedQuizzes: [],
   badges: [],
+  achievements: [],
+  friends: [],
+  referralCode: generateReferralCode(),
+  dailyChallenges: generateDailyChallenges(),
+  lastActive: new Date().toISOString(),
 };
+
+function generateReferralCode(): string {
+  return 'FL' + Math.random().toString(36).substring(2, 8).toUpperCase();
+}
+
+function generateDailyChallenges(): DailyChallenge[] {
+  return [
+    {
+      id: 'daily-lesson',
+      type: 'lesson',
+      target: 3,
+      progress: 0,
+      xpReward: 50,
+      completed: false,
+    },
+    {
+      id: 'daily-quiz',
+      type: 'quiz',
+      target: 2,
+      progress: 0,
+      xpReward: 75,
+      completed: false,
+    },
+    {
+      id: 'daily-streak',
+      type: 'streak',
+      target: 1,
+      progress: 0,
+      xpReward: 25,
+      completed: false,
+    },
+  ];
+}
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
@@ -49,7 +111,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [user]);
 
   const login = async (email: string, password: string) => {
-    // TODO: Implement with Lovable Cloud/Supabase
+    // TODO: Implement with backend
     // For now, simulate login
     const mockUser: User = {
       id: email,
@@ -61,6 +123,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       completedLessons: [],
       completedQuizzes: [],
       badges: [],
+      achievements: [],
+      friends: [],
+      referralCode: generateReferralCode(),
+      dailyChallenges: generateDailyChallenges(),
+      lastActive: new Date().toISOString(),
     };
     setUser(mockUser);
   };

@@ -4,6 +4,13 @@ export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
+  safelist: [
+    'lang-en',
+    'lang-hi',
+    'lang-mr',
+    'lang-kn',
+    'lang-ta',
+  ],
   theme: {
     container: {
       center: true,

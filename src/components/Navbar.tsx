@@ -18,6 +18,9 @@ export const Navbar = () => {
     ...(user ? [
       { path: '/dashboard', label: t('nav.dashboard', language) },
       { path: '/lessons', label: t('nav.lessons', language) },
+      { path: '/challenges', label: 'Challenges' },
+      { path: '/leaderboard', label: 'Leaderboard' },
+      { path: '/friends', label: 'Friends' },
       { path: '/simulator', label: t('nav.simulator', language) },
       { path: '/impact', label: t('nav.impact', language) },
     ] : []),
