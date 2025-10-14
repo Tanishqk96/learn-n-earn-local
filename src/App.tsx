@@ -12,10 +12,8 @@ import Dashboard from "./pages/Dashboard";
 import Lessons from "./pages/Lessons";
 import Quiz from "./pages/Quiz";
 import Simulator from "./pages/Simulator";
-import Impact from "./pages/Impact";
 import Leaderboard from "./pages/Leaderboard";
 import Challenges from "./pages/Challenges";
-import Friends from "./pages/Friends";
 import Badges from "./pages/Badges";
 import NotFound from "./pages/NotFound";
 
@@ -37,10 +35,8 @@ const App = () => (
               <Route path="/lessons" element={<Lessons />} />
               <Route path="/quiz/:lessonId" element={<Quiz />} />
               <Route path="/simulator" element={<Simulator />} />
-              <Route path="/impact" element={<Impact />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/challenges" element={<Challenges />} />
-              <Route path="/friends" element={<Friends />} />
               <Route path="/badges" element={<Badges />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

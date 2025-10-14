@@ -207,34 +207,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section className="py-20 bg-gradient-hero text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t('impact.title', language)}
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {[
-              { label: t('impact.students', language), value: '1,200+' },
-              { label: t('impact.lessons', language), value: '3,500+' },
-              { label: t('impact.languages', language), value: '5' },
-              { label: t('impact.cities', language), value: '45+' },
-            ].map((stat, idx) => (
-              <div key={idx} className="text-center space-y-2">
-                <div className="text-4xl md:text-5xl font-bold">{stat.value}</div>
-                <div className="text-white/80">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12 space-x-4">
-            <Button asChild variant="secondary" size="lg">
-              <Link to="/login">{t('impact.cta', language)}</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
