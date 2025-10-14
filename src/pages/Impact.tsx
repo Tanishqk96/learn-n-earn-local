@@ -21,14 +21,14 @@ const Impact = () => {
   const metrics = [
     {
       label: t('impact.students', language),
-      value: '10,245',
+      value: '1,200+',
       icon: Users,
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
       label: t('impact.lessons', language),
-      value: '52,890',
+      value: '3,500+',
       icon: BookOpen,
       color: 'text-accent',
       bgColor: 'bg-accent/10',
@@ -42,7 +42,7 @@ const Impact = () => {
     },
     {
       label: t('impact.cities', language),
-      value: '247',
+      value: '45+',
       icon: MapPin,
       color: 'text-success',
       bgColor: 'bg-success/10',
@@ -53,20 +53,20 @@ const Impact = () => {
     {
       name: 'Priya K.',
       location: 'Nashik, Maharashtra',
-      quote: 'FinLearn made finance simple. I can now help my parents with budgeting!',
-      grade: 'Grade 11',
+      quote: 'The budget simulator helped me understand where my pocket money goes. Now I save 30% every month!',
+      grade: 'Class 11',
     },
     {
       name: 'Arjun M.',
       location: 'Mysuru, Karnataka',
-      quote: 'Learning in Kannada helped me understand concepts better than English apps.',
-      grade: 'Grade 12',
+      quote: 'Learning about savings in Kannada made it so much easier. My friends and I now compare our streaks!',
+      grade: 'Class 12',
     },
     {
       name: 'Sneha R.',
       location: 'Coimbatore, Tamil Nadu',
-      quote: 'The simulator taught me more than any textbook. I feel confident about money now!',
-      grade: 'Grade 10',
+      quote: 'I taught my younger sister about emergency funds using this app. Financial literacy should start early!',
+      grade: 'Class 10',
     },
   ];
 

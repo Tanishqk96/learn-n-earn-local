@@ -23,17 +23,42 @@ const Leaderboard = () => {
   const { language } = useLanguage();
   const [timeframe, setTimeframe] = useState<'daily' | 'weekly' | 'allTime'>('weekly');
 
-  // Mock leaderboard data - will be replaced with real data
-  const mockLeaderboard: LeaderboardEntry[] = [
-    { id: '1', name: 'Priya S.', xp: 2500, level: 25, streak: 30, badges: 15, rank: 1 },
-    { id: '2', name: 'Rahul K.', xp: 2200, level: 22, streak: 25, badges: 12, rank: 2 },
-    { id: '3', name: 'Anjali M.', xp: 2000, level: 20, streak: 20, badges: 10, rank: 3 },
-    { id: '4', name: 'Arjun P.', xp: 1800, level: 18, streak: 15, badges: 9, rank: 4 },
-    { id: '5', name: 'Divya R.', xp: 1600, level: 16, streak: 12, badges: 8, rank: 5 },
-    { id: '6', name: 'Karthik V.', xp: 1400, level: 14, streak: 10, badges: 7, rank: 6 },
-    { id: '7', name: 'Sneha T.', xp: 1200, level: 12, streak: 8, badges: 6, rank: 7 },
-    { id: '8', name: 'Rohan G.', xp: 1000, level: 10, streak: 7, badges: 5, rank: 8 },
-  ];
+  // Generate realistic leaderboard with current user
+  const generateLeaderboard = (): LeaderboardEntry[] => {
+    const baseData = [
+      { name: 'Priya S.', xp: 850, level: 9, streak: 12, badges: 4 },
+      { name: 'Rahul K.', xp: 720, level: 8, streak: 8, badges: 3 },
+      { name: 'Anjali M.', xp: 680, level: 7, streak: 10, badges: 3 },
+      { name: 'Arjun P.', xp: 540, level: 6, streak: 5, badges: 2 },
+      { name: 'Divya R.', xp: 480, level: 5, streak: 6, badges: 2 },
+      { name: 'Karthik V.', xp: 420, level: 5, streak: 4, badges: 2 },
+      { name: 'Sneha T.', xp: 350, level: 4, streak: 3, badges: 1 },
+      { name: 'Rohan G.', xp: 280, level: 3, streak: 2, badges: 1 },
+    ];
+    
+    // Add current user if they exist
+    let entries = [...baseData];
+    if (user) {
+      const userName = user.email?.split('@')[0] || 'You';
+      entries.push({
+        name: userName,
+        xp: user.xp,
+        level: user.level,
+        streak: user.streak,
+        badges: user.badges.length,
+      });
+    }
+    
+    // Sort by XP and assign ranks
+    entries.sort((a, b) => b.xp - a.xp);
+    return entries.map((entry, idx) => ({
+      id: user && entry.name === (user.email?.split('@')[0] || 'You') ? user.id : `user-${idx}`,
+      ...entry,
+      rank: idx + 1,
+    }));
+  };
+
+  const mockLeaderboard = generateLeaderboard();
 
   const getRankIcon = (rank: number) => {
     switch (rank) {
@@ -80,8 +105,10 @@ const Leaderboard = () => {
               <CardTitle className="text-sm">Your Rank</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold text-primary">#42</div>
-              <p className="text-xs text-muted-foreground">Out of 1,234 learners</p>
+              <div className="text-3xl font-bold text-primary">
+                #{mockLeaderboard.find(e => e.id === user?.id)?.rank || '-'}
+              </div>
+              <p className="text-xs text-muted-foreground">Out of {mockLeaderboard.length} learners</p>
             </CardContent>
           </Card>
           <Card className="shadow-card">
@@ -98,8 +125,8 @@ const Leaderboard = () => {
               <CardTitle className="text-sm">Top 10%</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold text-success">+8</div>
-              <p className="text-xs text-muted-foreground">Positions this week</p>
+              <div className="text-3xl font-bold text-success">{user?.level || 1}</div>
+              <p className="text-xs text-muted-foreground">Current Level</p>
             </CardContent>
           </Card>
         </div>

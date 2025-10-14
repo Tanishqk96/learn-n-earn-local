@@ -217,10 +217,10 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              { label: t('impact.students', language), value: '10,000+' },
-              { label: t('impact.lessons', language), value: '50,000+' },
+              { label: t('impact.students', language), value: '1,200+' },
+              { label: t('impact.lessons', language), value: '3,500+' },
               { label: t('impact.languages', language), value: '5' },
-              { label: t('impact.cities', language), value: '200+' },
+              { label: t('impact.cities', language), value: '45+' },
             ].map((stat, idx) => (
               <div key={idx} className="text-center space-y-2">
                 <div className="text-4xl md:text-5xl font-bold">{stat.value}</div>

@@ -26,11 +26,12 @@ const Simulator = () => {
   const [balance, setBalance] = useState(0);
   const [totalSavings, setTotalSavings] = useState(0);
   const [totalInvestments, setTotalInvestments] = useState(0);
+  const [simulationHistory, setSimulationHistory] = useState<any[]>([]);
   
-  const monthlyIncome = 10000;
-  const [spending, setSpending] = useState(5000);
-  const [saving, setSaving] = useState(3000);
-  const [investing, setInvesting] = useState(2000);
+  const monthlyIncome = 5000;
+  const [spending, setSpending] = useState(2500);
+  const [saving, setSaving] = useState(1500);
+  const [investing, setInvesting] = useState(1000);
 
   const remaining = monthlyIncome - spending - saving - investing;
 
@@ -44,19 +45,35 @@ const Simulator = () => {
       return;
     }
 
-    // Calculate returns
-    const investmentReturn = totalInvestments * 0.01; // 1% monthly return
+    // Calculate realistic returns (8% annual = 0.67% monthly)
+    const investmentReturn = totalInvestments * 0.0067;
+    const savingsInterest = totalSavings * 0.0033; // 4% annual
     const newBalance = balance + remaining;
-    const newSavings = totalSavings + saving;
+    const newSavings = totalSavings + saving + savingsInterest;
     const newInvestments = totalInvestments + investing + investmentReturn;
 
+    const monthData = {
+      month,
+      balance: newBalance,
+      savings: newSavings,
+      investments: newInvestments,
+      spending,
+      savingAmount: saving,
+      investingAmount: investing,
+    };
+
     setBalance(newBalance);
-    setTotalSavings(newSavings);
+    setTotalSavings(Math.round(newSavings));
     setTotalInvestments(Math.round(newInvestments));
     setMonth(month + 1);
+    setSimulationHistory([...simulationHistory, monthData]);
 
-    // Award XP
-    const earnedXP = 50 + Math.round(saving / 100) + Math.round(investing / 50);
+    // Award XP based on good financial decisions
+    const savingsRatio = (saving + investing) / monthlyIncome;
+    let earnedXP = 30;
+    if (savingsRatio >= 0.5) earnedXP = 80; // Saving 50%+
+    else if (savingsRatio >= 0.3) earnedXP = 50; // Saving 30%+
+    
     if (user) {
       updateUserProgress({
         xp: user.xp + earnedXP,
@@ -65,8 +82,8 @@ const Simulator = () => {
     }
 
     toast({
-      title: `Month ${month} Complete! 🎉`,
-      description: `Earned ${earnedXP} XP! Investment grew by ₹${Math.round(investmentReturn)}`,
+      title: `Month ${month} Complete!`,
+      description: `Earned ${earnedXP} XP! Your wealth grew by ₹${Math.round(investmentReturn + savingsInterest)}`,
     });
   };
 
@@ -75,9 +92,10 @@ const Simulator = () => {
     setBalance(0);
     setTotalSavings(0);
     setTotalInvestments(0);
-    setSpending(5000);
-    setSaving(3000);
-    setInvesting(2000);
+    setSpending(2500);
+    setSaving(1500);
+    setInvesting(1000);
+    setSimulationHistory([]);
   };
 
   const categories = [
@@ -116,7 +134,7 @@ const Simulator = () => {
             {t('simulator.title', language)}
           </h1>
           <p className="text-muted-foreground">
-            Practice managing ₹10,000 monthly income and watch your wealth grow
+            Learn to manage a realistic ₹5,000 monthly pocket money budget
           </p>
         </div>
 
