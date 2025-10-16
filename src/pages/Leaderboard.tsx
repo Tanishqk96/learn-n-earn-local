@@ -93,40 +93,40 @@ const Leaderboard = () => {
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-2 flex items-center gap-2">
             <Trophy className="h-8 w-8 text-primary" />
-            Leaderboard
+            {t('leaderboard.title', language)}
           </h1>
-          <p className="text-muted-foreground">Compete with fellow learners across India</p>
+          <p className="text-muted-foreground">{t('leaderboard.subtitle', language)}</p>
         </div>
 
         {/* Stats Overview */}
         <div className="grid md:grid-cols-3 gap-4 mb-8">
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle className="text-sm">Your Rank</CardTitle>
+              <CardTitle className="text-sm">{t('leaderboard.yourRank', language)}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-primary">
                 #{mockLeaderboard.find(e => e.id === user?.id)?.rank || '-'}
               </div>
-              <p className="text-xs text-muted-foreground">Out of {mockLeaderboard.length} learners</p>
+              <p className="text-xs text-muted-foreground">{t('leaderboard.outOf', language)} {mockLeaderboard.length}</p>
             </CardContent>
           </Card>
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle className="text-sm">Your XP</CardTitle>
+              <CardTitle className="text-sm">{t('dashboard.xp', language)}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-accent">{user?.xp || 0}</div>
-              <p className="text-xs text-muted-foreground">Total experience points</p>
+              <p className="text-xs text-muted-foreground">{t('leaderboard.totalXP', language)}</p>
             </CardContent>
           </Card>
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle className="text-sm">Top 10%</CardTitle>
+              <CardTitle className="text-sm">{t('dashboard.level', language)}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-success">{user?.level || 1}</div>
-              <p className="text-xs text-muted-foreground">Current Level</p>
+              <p className="text-xs text-muted-foreground">{t('leaderboard.currentLevel', language)}</p>
             </CardContent>
           </Card>
         </div>
@@ -134,9 +134,9 @@ const Leaderboard = () => {
         {/* Leaderboard Tabs */}
         <Tabs defaultValue="weekly" className="space-y-6">
           <TabsList className="grid w-full md:w-auto md:inline-grid grid-cols-3">
-            <TabsTrigger value="daily">Today</TabsTrigger>
-            <TabsTrigger value="weekly">This Week</TabsTrigger>
-            <TabsTrigger value="allTime">All Time</TabsTrigger>
+            <TabsTrigger value="daily">{t('leaderboard.today', language)}</TabsTrigger>
+            <TabsTrigger value="weekly">{t('leaderboard.thisWeek', language)}</TabsTrigger>
+            <TabsTrigger value="allTime">{t('leaderboard.allTime', language)}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="weekly" className="space-y-4">

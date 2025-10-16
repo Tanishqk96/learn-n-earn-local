@@ -28,10 +28,10 @@ const Simulator = () => {
   const [totalInvestments, setTotalInvestments] = useState(0);
   const [simulationHistory, setSimulationHistory] = useState<any[]>([]);
   
-  const monthlyIncome = 5000;
-  const [spending, setSpending] = useState(2500);
-  const [saving, setSaving] = useState(1500);
-  const [investing, setInvesting] = useState(1000);
+  const monthlyIncome = 10000;
+  const [spending, setSpending] = useState(5000);
+  const [saving, setSaving] = useState(3000);
+  const [investing, setInvesting] = useState(2000);
 
   const remaining = monthlyIncome - spending - saving - investing;
 
@@ -134,9 +134,33 @@ const Simulator = () => {
             {t('simulator.title', language)}
           </h1>
           <p className="text-muted-foreground">
-            Learn to manage a realistic ₹5,000 monthly pocket money budget
+            {t('simulator.subtitle', language)}
           </p>
         </div>
+
+        {/* Knowledge Tips */}
+        <Card className="mb-8 bg-gradient-card shadow-card border-primary/20">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <AlertCircle className="h-5 w-5 text-primary" />
+              {t('knowledge.tips', language)}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <p className="text-sm flex items-start gap-2">
+              <span className="text-primary">•</span>
+              {t('sim.tip1', language)}
+            </p>
+            <p className="text-sm flex items-start gap-2">
+              <span className="text-primary">•</span>
+              {t('sim.tip2', language)}
+            </p>
+            <p className="text-sm flex items-start gap-2">
+              <span className="text-primary">•</span>
+              {t('sim.tip3', language)}
+            </p>
+          </CardContent>
+        </Card>
 
         {/* Month & Stats */}
         <div className="grid md:grid-cols-4 gap-4 mb-8">
@@ -163,8 +187,8 @@ const Simulator = () => {
           <Card className="shadow-card">
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2 mb-2">
-                <PiggyBank className="h-5 w-5 text-success" />
-                <CardTitle className="text-lg">Savings</CardTitle>
+              <PiggyBank className="h-5 w-5 text-success" />
+                <CardTitle className="text-lg">{t('simulator.save', language)}</CardTitle>
               </div>
               <div className="text-3xl font-bold text-success">₹{totalSavings}</div>
             </CardHeader>
@@ -173,8 +197,8 @@ const Simulator = () => {
           <Card className="shadow-card">
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2 mb-2">
-                <TrendingUp className="h-5 w-5 text-primary" />
-                <CardTitle className="text-lg">Investments</CardTitle>
+              <TrendingUp className="h-5 w-5 text-primary" />
+                <CardTitle className="text-lg">{t('simulator.invest', language)}</CardTitle>
               </div>
               <div className="text-3xl font-bold text-primary">₹{totalInvestments}</div>
             </CardHeader>
@@ -185,7 +209,7 @@ const Simulator = () => {
         <div className="grid lg:grid-cols-2 gap-6 mb-8">
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle>Monthly Budget</CardTitle>
+              <CardTitle>{t('simulator.budget', language)}</CardTitle>
               <CardDescription>
                 {t('simulator.income', language)}: ₹{monthlyIncome.toLocaleString()}
               </CardDescription>
@@ -224,7 +248,7 @@ const Simulator = () => {
                     ) : (
                       <Trophy className="h-5 w-5 text-success" />
                     )}
-                    <span className="font-semibold">Remaining</span>
+                    <span className="font-semibold">{t('simulator.remaining', language)}</span>
                   </div>
                   <span className={`font-bold text-xl ${
                     remaining < 0 ? 'text-destructive' : 'text-success'
@@ -238,29 +262,29 @@ const Simulator = () => {
 
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle>Month Summary</CardTitle>
-              <CardDescription>Review your allocation before ending the month</CardDescription>
+              <CardTitle>{t('simulator.summary', language)}</CardTitle>
+              <CardDescription>{t('simulator.review', language)}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 <div className="flex justify-between items-center py-2 border-b">
-                  <span className="text-muted-foreground">Income</span>
+                  <span className="text-muted-foreground">{t('simulator.income', language)}</span>
                   <span className="font-semibold">₹{monthlyIncome}</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b text-destructive">
-                  <span>Spending</span>
+                  <span>{t('simulator.spend', language)}</span>
                   <span className="font-semibold">-₹{spending}</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b text-success">
-                  <span>Saving</span>
+                  <span>{t('simulator.save', language)}</span>
                   <span className="font-semibold">+₹{saving}</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b text-primary">
-                  <span>Investing</span>
+                  <span>{t('simulator.invest', language)}</span>
                   <span className="font-semibold">+₹{investing}</span>
                 </div>
                 <div className="flex justify-between items-center py-3 bg-muted rounded-lg px-4">
-                  <span className="font-bold">Net Change</span>
+                  <span className="font-bold">{t('simulator.netChange', language)}</span>
                   <span className={`font-bold text-xl ${
                     remaining < 0 ? 'text-destructive' : 'text-success'
                   }`}>
@@ -280,13 +304,13 @@ const Simulator = () => {
                   {t('simulator.endMonth', language)}
                 </Button>
                 <Button onClick={reset} variant="outline" className="w-full">
-                  Reset Simulation
+                  {t('simulator.reset', language)}
                 </Button>
               </div>
 
               {month > 1 && (
                 <div className="p-4 bg-gradient-card rounded-lg border">
-                  <p className="text-sm text-muted-foreground mb-1">Total Wealth</p>
+                  <p className="text-sm text-muted-foreground mb-1">{t('simulator.totalWealth', language)}</p>
                   <p className="text-2xl font-bold text-primary">
                     ₹{(balance + totalSavings + totalInvestments).toLocaleString()}
                   </p>

@@ -29,6 +29,7 @@ const Quiz = () => {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState<boolean[]>([]);
+  const [showKnowledge, setShowKnowledge] = useState(true);
 
   // Sample quiz questions
   const quizQuestions: QuizQuestion[] = [
@@ -115,9 +116,52 @@ const Quiz = () => {
     setShowResult(false);
     setScore(0);
     setAnswers([]);
+    setShowKnowledge(true);
   };
 
   const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+
+  // Knowledge screen before quiz
+  if (showKnowledge) {
+    return (
+      <div className="min-h-screen bg-muted/30 flex items-center justify-center p-4">
+        <Card className="w-full max-w-2xl shadow-hover">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Star className="h-6 w-6 text-primary" />
+              {t('knowledge.title', language)}
+            </CardTitle>
+            <CardDescription>{t('knowledge.tips', language)}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-3">
+              <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
+                <p className="text-sm flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  {t('quiz.tip1', language)}
+                </p>
+              </div>
+              <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
+                <p className="text-sm flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  {t('quiz.tip2', language)}
+                </p>
+              </div>
+              <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
+                <p className="text-sm flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  {t('quiz.tip3', language)}
+                </p>
+              </div>
+            </div>
+            <Button onClick={() => setShowKnowledge(false)} className="w-full" size="lg">
+              {t('knowledge.ready', language)}
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   if (showResult) {
     const passed = score >= quizQuestions.length * 0.6;

@@ -74,9 +74,9 @@ const Challenges = () => {
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-2 flex items-center gap-2">
             <Target className="h-8 w-8 text-primary" />
-            Daily & Weekly Challenges
+            {t('challenges.title', language)}
           </h1>
-          <p className="text-muted-foreground">Complete challenges to earn bonus XP and badges</p>
+          <p className="text-muted-foreground">{t('challenges.subtitle', language)}</p>
         </div>
 
         {/* Daily Challenges */}

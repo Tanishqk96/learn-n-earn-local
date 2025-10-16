@@ -90,6 +90,7 @@ export const translations: Record<Language, Record<string, string>> = {
     
     // Simulator
     'simulator.title': 'Budget Simulator',
+    'simulator.subtitle': 'Practice managing a ₹10,000 monthly budget',
     'simulator.month': 'Month',
     'simulator.income': 'Monthly Income',
     'simulator.balance': 'Balance',
@@ -99,6 +100,19 @@ export const translations: Record<Language, Record<string, string>> = {
     'simulator.endMonth': 'End Month',
     'simulator.summary': 'Month Summary',
     'simulator.earned': 'Earned XP',
+    'simulator.budget': 'Monthly Budget',
+    'simulator.remaining': 'Remaining',
+    'simulator.review': 'Review your allocation before ending the month',
+    'simulator.netChange': 'Net Change',
+    'simulator.reset': 'Reset Simulation',
+    'simulator.totalWealth': 'Total Wealth',
+    
+    // Glossary
+    'glossary.budget': 'A plan for how to spend and save your money each month',
+    'glossary.savings': 'Money you keep aside for future needs instead of spending now',
+    'glossary.investment': 'Money you put in stocks, mutual funds etc. to grow over time',
+    'glossary.emergency': 'Money saved specifically for unexpected expenses like medical bills',
+    'glossary.interest': 'Extra money earned on savings or paid on loans',
     
     // Impact
     'impact.title': 'Our Impact',
@@ -130,11 +144,46 @@ export const translations: Record<Language, Record<string, string>> = {
 
     // Gamification
     'badges.title': 'Badges & Achievements',
-    'challenges.title': 'Daily Challenges',
+    'challenges.title': 'Daily & Weekly Challenges',
+    'challenges.subtitle': 'Complete challenges to earn bonus XP and badges',
     'leaderboard.title': 'Leaderboard',
+    'leaderboard.subtitle': 'Compete with fellow learners across India',
+    'leaderboard.yourRank': 'Your Rank',
+    'leaderboard.outOf': 'Out of',
+    'leaderboard.totalXP': 'Total experience points',
+    'leaderboard.currentLevel': 'Current Level',
+    'leaderboard.today': 'Today',
+    'leaderboard.thisWeek': 'This Week',
+    'leaderboard.allTime': 'All Time',
     'friends.title': 'Friends',
     'referral.code': 'Referral Code',
     'referral.share': 'Share with Friends',
+    
+    // Knowledge sections
+    'knowledge.title': 'Before You Start',
+    'knowledge.tips': 'Quick Tips',
+    'knowledge.glossary': 'Learn the Basics',
+    'knowledge.ready': 'Ready to Begin',
+    'knowledge.term': 'Term',
+    'knowledge.meaning': 'What it means',
+    
+    // Simulator knowledge
+    'sim.tip1': 'Start with needs (food, rent), then wants, then savings',
+    'sim.tip2': 'Try to save at least 20% of your income each month',
+    'sim.tip3': 'Investments grow slowly over time - be patient',
+    
+    // Quiz knowledge  
+    'quiz.tip1': 'Read each question carefully',
+    'quiz.tip2': 'You need 60% to pass - take your time',
+    'quiz.tip3': 'Learn from explanations even if you get it wrong',
+    
+    // Homepage content
+    'home.feature1': 'Cash-based habits, new to digital finance',
+    'home.feature2': 'Need content in regional languages',
+    'home.feature3': 'Learn from family advice & experience',
+    'home.feature4': 'Ready to build financial confidence',
+    'home.subtitle': 'Designed specifically for students in Tier 2 & 3 cities across India',
+    'home.gaps.subtitle': 'See how we\'re different from other apps',
   },
   hi: {
     'app.name': 'फिनलर्न',
@@ -171,6 +220,11 @@ export const translations: Record<Language, Record<string, string>> = {
     'impact.title': 'हमारा प्रभाव',
     'auth.login': 'लॉगिन',
     'auth.register': 'रजिस्टर',
+    'knowledge.title': 'शुरू करने से पहले',
+    'knowledge.tips': 'त्वरित सुझाव',
+    'knowledge.glossary': 'मूल बातें सीखें',
+    'knowledge.ready': 'शुरू करने के लिए तैयार',
+    'home.subtitle': 'भारत के टियर 2 और 3 शहरों के छात्रों के लिए विशेष रूप से डिज़ाइन किया गया',
   },
   mr: {
     'app.name': 'फिनलर्न',
@@ -187,6 +241,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.dashboard': 'डॅशबोर्ड',
     'dashboard.welcome': 'परत स्वागत आहे',
     'dashboard.guest': 'पाहुणे वापरकर्ता',
+    'knowledge.title': 'सुरू करण्यापूर्वी',
+    'knowledge.glossary': 'मूलभूत गोष्टी शिका',
+    'home.subtitle': 'भारतातील टियर 2 आणि 3 शहरांमधील विद्यार्थ्यांसाठी विशेषतः डिझाइन केलेले',
   },
   kn: {
     'app.name': 'ಫಿನ್‌ಲರ್ನ್',
@@ -199,6 +256,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.home': 'ಮುಖಪುಟ',
     'dashboard.welcome': 'ಮರಳಿ ಸ್ವಾಗತ',
     'dashboard.guest': 'ಅತಿಥಿ ಬಳಕೆದಾರ',
+    'knowledge.title': 'ನೀವು ಪ್ರಾರಂಭಿಸುವ ಮೊದಲು',
+    'knowledge.glossary': 'ಮೂಲಭೂತ ವಿಷಯಗಳನ್ನು ಕಲಿಯಿರಿ',
+    'home.subtitle': 'ಭಾರತದ ಟೈರ್ 2 ಮತ್ತು 3 ನಗರಗಳ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ವಿಶೇಷವಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ',
   },
   ta: {
     'app.name': 'ஃபின்லர்ன்',
@@ -211,6 +271,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.home': 'முகப்பு',
     'dashboard.welcome': 'மீண்டும் வரவேற்கிறோம்',
     'dashboard.guest': 'விருந்தினர் பயனர்',
+    'knowledge.title': 'நீங்கள் தொடங்கும் முன்',
+    'knowledge.glossary': 'அடிப்படைகளைக் கற்றுக்கொள்ளுங்கள்',
+    'home.subtitle': 'இந்தியாவின் அடுக்கு 2 மற்றும் 3 நகரங்களில் உள்ள மாணவர்களுக்காக சிறப்பாக வடிவமைக்கப்பட்டது',
   },
 };
 

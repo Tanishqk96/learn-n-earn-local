@@ -118,7 +118,7 @@ const Index = () => {
               {t('features.title', language)}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Designed specifically for students in Tier 2 & 3 cities across India
+              {t('home.subtitle', language)}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -155,10 +155,10 @@ const Index = () => {
             </p>
             <div className="grid sm:grid-cols-2 gap-4 pt-8">
               {[
-                { icon: Users, text: 'Cash-based habits, new to digital finance' },
-                { icon: Globe, text: 'Need content in regional languages' },
-                { icon: BookOpen, text: 'Learn from family advice & experience' },
-                { icon: Sparkles, text: 'Ready to build financial confidence' },
+                { icon: Users, text: t('home.feature1', language) },
+                { icon: Globe, text: t('home.feature2', language) },
+                { icon: BookOpen, text: t('home.feature3', language) },
+                { icon: Sparkles, text: t('home.feature4', language) },
               ].map((item, idx) => (
                 <div 
                   key={idx}
@@ -183,7 +183,7 @@ const Index = () => {
               {t('gaps.title', language)}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('gaps.subtitle', language)}
+              {t('home.gaps.subtitle', language)}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">

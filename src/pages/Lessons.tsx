@@ -34,6 +34,15 @@ const Lessons = () => {
   const { language } = useLanguage();
   const navigate = useNavigate();
 
+  // Simple glossary for new learners
+  const glossary = [
+    { term: 'Budget', meaning: t('glossary.budget', language) },
+    { term: 'Savings', meaning: t('glossary.savings', language) },
+    { term: 'Investment', meaning: t('glossary.investment', language) },
+    { term: 'Emergency Fund', meaning: t('glossary.emergency', language) },
+    { term: 'Interest', meaning: t('glossary.interest', language) },
+  ];
+
   const lessons: Lesson[] = [
     {
       id: 'money-basics-1',
@@ -151,6 +160,27 @@ const Lessons = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Knowledge Bank for Beginners */}
+        <Card className="mb-8 shadow-card bg-gradient-card">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Star className="h-5 w-5 text-primary" />
+              {t('knowledge.glossary', language)}
+            </CardTitle>
+            <CardDescription>Simple explanations of important terms</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 gap-3">
+              {glossary.map((item, idx) => (
+                <div key={idx} className="p-3 bg-background/50 rounded-lg border">
+                  <h4 className="font-semibold text-primary mb-1">{item.term}</h4>
+                  <p className="text-sm text-muted-foreground">{item.meaning}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Lessons by Category */}
         <div className="space-y-8">
