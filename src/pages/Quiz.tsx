@@ -31,42 +31,221 @@ const Quiz = () => {
   const [answers, setAnswers] = useState<boolean[]>([]);
   const [showKnowledge, setShowKnowledge] = useState(true);
 
-  // Sample quiz questions
-  const quizQuestions: QuizQuestion[] = [
-    {
-      question: 'What is the 50-30-20 budgeting rule?',
-      options: [
-        '50% needs, 30% wants, 20% savings',
-        '50% savings, 30% needs, 20% wants',
-        '50% wants, 30% savings, 20% needs',
-        '50% investments, 30% needs, 20% wants',
-      ],
-      correct: 0,
-      explanation: 'The 50-30-20 rule suggests allocating 50% for needs, 30% for wants, and 20% for savings.',
-    },
-    {
-      question: 'What is an emergency fund?',
-      options: [
-        'Money for shopping',
-        'Money saved for unexpected expenses',
-        'Money for investments',
-        'Money for vacations',
-      ],
-      correct: 1,
-      explanation: 'An emergency fund is money set aside specifically for unexpected expenses like medical bills or job loss.',
-    },
-    {
-      question: 'What does ROI stand for?',
-      options: [
-        'Return of Investment',
-        'Rate of Interest',
-        'Return on Investment',
-        'Risk on Investment',
-      ],
-      correct: 2,
-      explanation: 'ROI stands for Return on Investment, measuring the profitability of an investment.',
-    },
-  ];
+  // Quiz questions for each lesson
+  const quizData: Record<string, QuizQuestion[]> = {
+    'money-basics-1': [
+      {
+        question: 'What is the primary purpose of money?',
+        options: [
+          'To store value and exchange goods',
+          'Only for decoration',
+          'To make paper',
+          'Only for lending',
+        ],
+        correct: 0,
+        explanation: 'Money serves as a medium of exchange, a store of value, and a unit of account.',
+      },
+      {
+        question: 'Which of these is NOT a form of money?',
+        options: [
+          'Coins',
+          'Bank notes',
+          'Digital payments',
+          'Personal promises',
+        ],
+        correct: 3,
+        explanation: 'Personal promises are not considered money. Money must be widely accepted as a medium of exchange.',
+      },
+      {
+        question: 'Why is saving money in a safe place important?',
+        options: [
+          'It helps protect and preserve its value',
+          'Money grows automatically without effort',
+          'Money never loses value',
+          'Banks give it back doubled',
+        ],
+        correct: 0,
+        explanation: 'Saving money in safe places like banks protects it from loss or theft and may earn interest.',
+      },
+    ],
+    'money-basics-2': [
+      {
+        question: 'What is income?',
+        options: [
+          'Money you spend on things',
+          'Money you earn or receive',
+          'Money you lend to others',
+          'Money you find',
+        ],
+        correct: 1,
+        explanation: 'Income is the money you earn from work, business, or other sources.',
+      },
+      {
+        question: 'What are expenses?',
+        options: [
+          'Money you earn',
+          'Money you save',
+          'Money you spend on goods and services',
+          'Money you invest',
+        ],
+        correct: 2,
+        explanation: 'Expenses are the costs of goods and services you buy or pay for.',
+      },
+      {
+        question: 'What happens when expenses are greater than income?',
+        options: [
+          'You save money',
+          'You go into debt',
+          'You become rich',
+          'Nothing happens',
+        ],
+        correct: 1,
+        explanation: 'When you spend more than you earn, you may need to borrow money, leading to debt.',
+      },
+    ],
+    'savings-1': [
+      {
+        question: 'Why is it important to save money regularly?',
+        options: [
+          'To prepare for future needs and emergencies',
+          'Money saved disappears',
+          'There is no benefit',
+          'Only rich people should save',
+        ],
+        correct: 0,
+        explanation: 'Regular saving helps you prepare for unexpected expenses and achieve future goals.',
+      },
+      {
+        question: 'What is a good habit for building savings?',
+        options: [
+          'Spend first, save if anything is left',
+          'Save a fixed amount before spending',
+          'Only save when you have extra money',
+          'Never save, always spend',
+        ],
+        correct: 1,
+        explanation: 'Saving first (paying yourself first) ensures you build savings consistently.',
+      },
+      {
+        question: 'How much should you try to save from your income?',
+        options: [
+          'Nothing',
+          'Everything',
+          'At least 10-20% regularly',
+          'Only once a year',
+        ],
+        correct: 2,
+        explanation: 'Financial experts recommend saving at least 10-20% of your income regularly.',
+      },
+    ],
+    'savings-2': [
+      {
+        question: 'What is an emergency fund?',
+        options: [
+          'Money for shopping',
+          'Money saved for unexpected expenses',
+          'Money for vacations',
+          'Money to lend to friends',
+        ],
+        correct: 1,
+        explanation: 'An emergency fund is money set aside specifically for unexpected expenses like medical bills or job loss.',
+      },
+      {
+        question: 'How many months of expenses should an emergency fund cover?',
+        options: [
+          'One week',
+          '3-6 months',
+          '10 years',
+          'No specific amount',
+        ],
+        correct: 1,
+        explanation: 'Financial experts recommend having 3-6 months of living expenses in an emergency fund.',
+      },
+      {
+        question: 'When should you use your emergency fund?',
+        options: [
+          'For a new phone',
+          'For a vacation',
+          'For medical emergencies or job loss',
+          'For shopping sales',
+        ],
+        correct: 2,
+        explanation: 'Emergency funds should only be used for true emergencies like medical expenses or sudden job loss.',
+      },
+    ],
+    'budgeting-1': [
+      {
+        question: 'What is the 50-30-20 budgeting rule?',
+        options: [
+          '50% needs, 30% wants, 20% savings',
+          '50% savings, 30% needs, 20% wants',
+          '50% wants, 30% savings, 20% needs',
+          '50% investments, 30% needs, 20% wants',
+        ],
+        correct: 0,
+        explanation: 'The 50-30-20 rule suggests allocating 50% for needs, 30% for wants, and 20% for savings.',
+      },
+      {
+        question: 'Which of these is a "need" in budgeting?',
+        options: [
+          'Movie tickets',
+          'Rent and food',
+          'Designer clothes',
+          'Gaming subscriptions',
+        ],
+        correct: 1,
+        explanation: 'Needs are essential expenses like housing, food, utilities, and basic transportation.',
+      },
+      {
+        question: 'Why is tracking your spending important?',
+        options: [
+          'It helps you know where your money goes',
+          'It makes money grow',
+          'It is not important',
+          'Only banks need to track',
+        ],
+        correct: 0,
+        explanation: 'Tracking spending helps you identify where your money goes and make better financial decisions.',
+      },
+    ],
+    'investing-1': [
+      {
+        question: 'What does ROI stand for?',
+        options: [
+          'Return of Investment',
+          'Rate of Interest',
+          'Return on Investment',
+          'Risk on Investment',
+        ],
+        correct: 2,
+        explanation: 'ROI stands for Return on Investment, measuring the profitability of an investment.',
+      },
+      {
+        question: 'Why do people invest money?',
+        options: [
+          'To lose it',
+          'To make their money grow over time',
+          'Because they have too much',
+          'Only for fun',
+        ],
+        correct: 1,
+        explanation: 'People invest to grow their wealth over time through returns like interest, dividends, or appreciation.',
+      },
+      {
+        question: 'What is a key rule of investing?',
+        options: [
+          'Invest all your money in one place',
+          'Only invest what you can afford to lose',
+          'Borrow money to invest',
+          'Always invest based on tips',
+        ],
+        correct: 1,
+        explanation: 'You should only invest money you can afford to lose and diversify your investments to reduce risk.',
+      },
+    ],
+  };
+
+  const quizQuestions: QuizQuestion[] = quizData[lessonId || 'money-basics-1'] || quizData['money-basics-1'];
 
   const handleAnswer = (optionIndex: number) => {
     if (selectedAnswer !== null) return;
